@@ -55,18 +55,20 @@ for (let index = 1; index < info.length; index++) {
     // element.textContent = info[index].title
 
     const ul = document.createElement("ul");
-    const liAssets = document.createElement("li");
-    const liText = document.createElement("li");
+    const liPng = document.createElement("li");
+    const liVideo = document.createElement("li");
+    const liTextThumb = document.createElement("li");
+    // const liTextVideo = document.createElement("li");
     const title = document.createElement("p");
     const description = document.createElement("p");
     console.log(info[index].thumbSrc)
 
-    liAssets.setAttribute('data-thumb-src', `assets/${info[index].thumbSrc}`);
-    liAssets.setAttribute('data-thumb-video-src', `assets/videos/${info[index].thumbVideoSrc}`);
-    liAssets.setAttribute('data-thumb-vast-src', '');
+    liPng.setAttribute('data-thumb-src', `assets/${info[index].thumbSrc}`);
+    liVideo.setAttribute('data-rl-src', `assets/videos/${info[index].thumbVideoSrc}`);
 
-    liText.setAttribute('data-thumb-caption', '');
-    liText.setAttribute('data-thumb-caption-offset', '70');
+    liTextThumb.setAttribute('data-thumb-caption', '');
+    liTextThumb.setAttribute('data-thumb-caption-offset', '70');
+    // liTextVideo.setAttribute('data-rl-caption', '');
 
     title.className = "fwdr3dcov-title"
     title.textContent = info[index].title
@@ -75,11 +77,15 @@ for (let index = 1; index < info.length; index++) {
     description.className = "fwdr3dcov-desc"
     description.textContent = info[index].desc
 
-    liText.appendChild(title)
-    liText.appendChild(description)
+    liTextThumb.appendChild(title)
+    liTextThumb.appendChild(description)
+    // liTextVideo.appendChild(title)
+    // liTextVideo.appendChild(description)
 
-    ul.appendChild(liAssets)
-    ul.appendChild(liText)
+    ul.appendChild(liVideo)
+    ul.appendChild(liPng)
+    ul.appendChild(liTextThumb)
+    // ul.appendChild(liTextVideo)
     if (thumbsVideo) thumbsVideo.appendChild(ul)
 }
 
