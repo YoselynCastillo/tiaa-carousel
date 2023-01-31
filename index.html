@@ -30,7 +30,7 @@
           coverflowHolderDivId: "myDiv",
           coverflowDataListDivId: "coverflowData",
           displayType: "responsive",
-          coverflowWidth: 1600,
+          coverflowWidth: 990,
           coverflowOffsetHeight: 120,
           thumbnailResizeOffest: 60,
           zIndex: 0,
@@ -52,13 +52,13 @@
           preloaderFillColor: "#FFFFFF",
 
           // Thumbnails.
-          thumbnailWidth: 530,
-          thumbnailHeight: 348,
+          thumbnailWidth: 400,
+          thumbnailHeight: 262.64,
           thumbnailXOffset3D: 100,
-          thumbnailXSpace3D: 82,
+          thumbnailXSpace3D: 97,
           thumbnailZOffset3D: 200,
-          thumbnailZSpace3D: 93,
-          thumbnailYAngle3D: 70,
+          thumbnailZSpace3D: 180,
+          thumbnailYAngle3D: 55,
           thumbnailHoverOffset: 100,
           thumbnailOffsetY: 0,
           thumbnailBorderSize: 0,
@@ -73,8 +73,8 @@
           reflectionDistance: 0,
           reflectionOpacity: 0.4,
           showThumbnailsGradient: "yes",
-          thumbnailGradientColor1: "rgba(11, 11, 11, 0)",
-          thumbnailGradientColor2: "rgba(11, 11, 11, 1)",
+          thumbnailGradientColor1: "rgba(0, 56, 101, 0)",
+          thumbnailGradientColor2: "rgba(0, 56, 101, 1)",
           useVideo: "yes",
           videoAutoPlay: "no",
           nextVideoAutoPlay: "no",
@@ -258,18 +258,19 @@
   </head>
 
   <body>
-    <video
+    <video class="videoBg"
       src="assets/tiaa_RetireTech_Background_v04.mp4"
       autoplay="true"
       muted="true"
       loop="true"
     ></video>
+    <!-- <img class="fondo" src="assets/image001.png" alt=""> -->
     <script src="js/index.js"></script>
 
     <div class="header">
       <ul>
         <li>TIAA Forum 2023</li>
-        <img src="assets/tiaa-logo-white.svg" alt="" />
+        <img class="logo" src="assets/tiaa-logo-white.svg" alt="" />
         <li>February 6-8, 2023</li>
       </ul>
     </div>

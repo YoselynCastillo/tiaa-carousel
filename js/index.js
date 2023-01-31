@@ -29,7 +29,7 @@ var info = [
         thumbSrc: 'TIAA_0-Forum2023-LOOP_DEL_01035317_RND.png',
         thumbVideoSrc: 'TIAA_4-GoogleAI_v11_DEL.mp4',
         title: 'Re-Imagined TIAA Retirement Technology',
-        desc: 'The next generation and transformative changes coming to our platforms and technology supporting Retirement',
+        desc: 'The next generation of transformative changes coming soon to the platforms and technology that support retirement',
     },
     {
         thumbSrc: 'TIAA_0-Forum2023-LOOP_DEL_01074603_RND.png',
