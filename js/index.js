@@ -43,7 +43,7 @@ const addThumbnails = () => {
       thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01083623_RND.png",
       thumbVideoSrc: "TIAA_6-Awards_v01_DEL.mp4",
       title: "TIAA Accolades",
-      desc: "TIAA has been recognized as a game-changer and leader in the retirement industry.",
+      desc: "TIAA has been recognized as a game-changer and leader in the retirement industry",
     },
   ];
 
@@ -76,8 +76,6 @@ const addThumbnails = () => {
 
     if (thumbsVideo) thumbsVideo.appendChild(ul);
   }
-
-  
 };
 
 // *
@@ -87,13 +85,16 @@ FWDR3DCovUtils.onReady(function () {
   addThumbnails();
 
   new FWDR3DCov({
-    // Main.
+    // * Main.
+
+    // Carousel size
+    coverflowWidth: 3840, // ! Important
+    coverflowOffsetHeight: 220, // ! Important
+
     instanceName: "fwdr3dcov0",
     coverflowHolderDivId: "myDiv",
     coverflowDataListDivId: "coverflowData",
     displayType: "responsive",
-    coverflowWidth: 990,
-    coverflowOffsetHeight: 120,
     thumbnailResizeOffest: 60,
     zIndex: 0,
     mainFolderPath: "coverflow/start/content",
@@ -112,9 +113,12 @@ FWDR3DCovUtils.onReady(function () {
     backgroundImageSize: "auto",
     preloaderBackgroundColor: "#333333",
     preloaderFillColor: "#FFFFFF",
-    // Thumbnails.
-    thumbnailWidth: 400,
-    thumbnailHeight: 262.64,
+
+    // * Thumbnails
+    // Thumbnail size
+    thumbnailWidth: 1400, // ! Important
+    thumbnailHeight: 787.5, // ! Important
+
     thumbnailXOffset3D: 100,
     thumbnailXSpace3D: 97,
     thumbnailZOffset3D: 200,

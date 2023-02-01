@@ -7395,7 +7395,7 @@
                 }else{
                     var y = Math.round(_s.dumyThumbDO.getRect().top - prt.mainDO.getGlobalY() + _s.dumyThumbDO.getRect().height);
                     _s.textHolderDO.setY(y);
-                    _s.textHolderDO.setHeight(300);
+                    _s.textHolderDO.setHeight(500);
                 }
             }
         }
