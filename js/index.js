@@ -36,14 +36,14 @@ const addThumbnails = () => {
     {
       thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01074603_RND.png",
       thumbVideoSrc: "TIAA_5-MFABB_v11_DEL.mp4",
-      title: "Re-Imagined TIAA Retirement Technology",
-      desc: "The next generation and transformative changes coming to our platforms and technology supporting Retirement",
+      title: "Next Generation Digital Security and Identity",
+      desc: "The next generation of digital security includes state-of-the-art tools for multi factor authentication, biometrics, and device binding",
     },
     {
       thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01083623_RND.png",
       thumbVideoSrc: "TIAA_6-Awards_v01_DEL.mp4",
-      title: "Re-Imagined TIAA Retirement Technology",
-      desc: "The next generation and transformative changes coming to our platforms and technology supporting Retirement",
+      title: "TIAA Accolades",
+      desc: "TIAA has been recognized as a game-changer and leader in the retirement industry.",
     },
   ];
 
