@@ -2,6 +2,7 @@
 // * Add Thumbnails to DOM
 // *
 const addThumbnails = () => {
+  // > Data
   const info = [
     {
       thumbSrc: "TIAA_0-Forum2023-LOOP_DEL_01001213_RND.png",
@@ -49,6 +50,7 @@ const addThumbnails = () => {
 
   const thumbsVideo = document.getElementById("thumbsVideo");
 
+  // > Add elements to DOM
   for (let index = 0; index < info.length; index++) {
     const ul = document.createElement("ul");
     const liPng = document.createElement("li");
@@ -57,7 +59,10 @@ const addThumbnails = () => {
     const description = document.createElement("p");
 
     liPng.setAttribute("data-thumb-src", `assets/${info[index].thumbSrc}`);
-    liPng.setAttribute("data-thumb-video-src", `videos/${info[index].thumbVideoSrc}`);
+    liPng.setAttribute(
+      "data-thumb-video-src",
+      `videos/${info[index].thumbVideoSrc}`
+    );
 
     liTextThumb.setAttribute("data-thumb-caption", "");
     liTextThumb.setAttribute("data-thumb-caption-offset", "70");
@@ -82,8 +87,10 @@ const addThumbnails = () => {
 // * Init carousel
 // *
 FWDR3DCovUtils.onReady(function () {
+  // > Add elements to DOM
   addThumbnails();
 
+  // > Create carousel
   new FWDR3DCov({
     // * Main.
 
@@ -304,20 +311,111 @@ FWDR3DCovUtils.onReady(function () {
     rlSkipToVideoText: "",
     rlSkipToVideoButtonText: "",
   });
+
+  // ! Remove play button
+  setTimeout(() => {
+    document
+      .querySelector(".EVPLargePlayButtonNormalState")
+      ?.parentNode.remove();
+  }, 500);
+
+  // > Add close button for fullscreen
+  addCloseButton();
+
+  // > Add event listener for fullscreen
+  addFullScreenEventListener();
 });
 
+const addCloseButton = () => {
+  // Get video element
+  const videoContainer = document.querySelector(".video-screen-holder");
+
+  if (videoContainer) {
+    // Create and add new element for close button
+    const div = document.createElement("div");
+    const text = document.createTextNode("X");
+    div.id = "close-btn";
+    div.appendChild(text);
+    videoContainer.appendChild(div);
+  } else {
+    setTimeout(() => {
+      addCloseButton();
+    }, 500);
+  }
+};
+
 // *
-// * Auto Fullscreen videos on play
+// * Event Listener (fullscreenchange): Show CLOSE text when video is on fullscreen
+// *
+const addFullScreenEventListener = () => {
+  // Get video and videoContainer elements
+  const video = document.querySelectorAll("video")[1];
+  const videoContainer = document.querySelector(".video-screen-holder");
+
+  if (videoContainer) {
+    // Add event listener
+    videoContainer.addEventListener(
+      "fullscreenchange",
+      function (event) {
+        if (!document.webkitRequestFullScreen) {
+          if (document.fullscreenElement) {
+            // Show close button
+            document.querySelector("#close-btn").style.display = "flex";
+          } else {
+            // Hide close button
+            document.querySelector("#close-btn").style.display = "none";
+
+            // Pause video
+            video.pause();
+          }
+        }
+      },
+      false
+    );
+  } else {
+    setTimeout(() => {
+      addFullScreenEventListener();
+    }, 500);
+  }
+};
+
+// *
+// * Event Listener (click): Auto Fullscreen videos on play
 // *
 addEventListener("click", (event) => {
-  if (event.target.className.includes("fwdr3dcov-icon-play")) {
-    const video = document.querySelectorAll("video")[1];
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.msRequestFullScreen) {
-      video.msRequestFullScreen();
+  // Get video and videoContainer elements
+  const video = document.querySelectorAll("video")[1];
+  const videoContainer = document.querySelector(".video-screen-holder");
+
+  // ! Hacky way to find out if the element clicked is the thumbnail in the center of the carousel
+  const isMainThumbnail = event.target
+    .closest(".fwdr3dcov-thumbnail")
+    ?.style?.transform?.includes("rotateY(0deg)");
+  const isPlayBtn = event.target.className?.includes("fwdr3dcov-icon-play");
+  const isCloseBtn = event.target.id === "close-btn";
+
+  // > Exit fullscreen
+  if (isCloseBtn) {
+    video.pause();
+    document.exitFullscreen();
+    return;
+  }
+
+  // > Play video in fullscreen
+  if (isMainThumbnail || isPlayBtn) {
+    // Start video from the beginning
+    video.currentTime = 0;
+
+    // Play video
+    video.play();
+
+    // Set fullscreen
+    if (videoContainer.requestFullscreen) {
+      videoContainer.requestFullscreen();
+    } else if (videoContainer.webkitRequestFullscreen) {
+      videoContainer.webkitRequestFullscreen();
+    } else if (videoContainer.msRequestFullScreen) {
+      videoContainer.msRequestFullScreen();
     }
   }
 });
