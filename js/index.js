@@ -323,8 +323,8 @@ FWDR3DCovUtils.onReady(function () {
   setTimeout(() => {
     const video = document.querySelectorAll("video")[1];
     video.loop = true;
-  }, 2000)
-  
+  }, 2000);
+
   // > Add close button for fullscreen
   addCloseButton();
 
@@ -397,8 +397,9 @@ addEventListener("click", (event) => {
   const isMainThumbnail = event.target
     .closest(".fwdr3dcov-thumbnail")
     ?.style?.transform?.includes("rotateY(0deg)");
-  const isPlayBtn = event.target.className?.includes("fwdr3dcov-icon-play");
-  const isCloseBtn = event.target.id === "close-btn";
+  const isPlayBtn = event.target?.className?.includes("fwdr3dcov-icon-play");
+  const isCloseBtn = event.target?.id === "close-btn";
+  const isVideo = event.target?.tagName.toLowerCase() === "video";
 
   // > Exit fullscreen
   if (isCloseBtn) {
@@ -423,5 +424,18 @@ addEventListener("click", (event) => {
     } else if (videoContainer.msRequestFullScreen) {
       videoContainer.msRequestFullScreen();
     }
+    return;
+  }
+
+  // > Pause/Play video when it's playing on fullscreen
+  if (isVideo) {
+    const video = event.target;
+
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+    return;
   }
 });
