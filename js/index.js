@@ -319,6 +319,12 @@ FWDR3DCovUtils.onReady(function () {
       ?.parentNode.remove();
   }, 500);
 
+  // > Set videos to loop
+  setTimeout(() => {
+    const video = document.querySelectorAll("video")[1];
+    video.loop = true;
+  }, 2000)
+  
   // > Add close button for fullscreen
   addCloseButton();
 
